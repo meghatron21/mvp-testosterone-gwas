@@ -1,0 +1,3 @@
+# cell type analysis
+# Step 1: extract-gtex-genes.sh
+# Step 2: coloc.sh
