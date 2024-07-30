@@ -16,8 +16,10 @@ cell=${cells[$SLURM_ARRAY_TASK_ID - 1]}
 
 map=/cellar/users/mpagadal/data/gtex/GTEx_Analysis_2017-06-05_v8_WholeGenomeSeq_838Indiv_Analysis_Freeze.lookup_table.txt
 gtex=/cellar/users/mpagadal/data/gtex/GTEx_Analysis_v8_QTLs/GTEx_Analysis_v8_EUR_eQTL_all_associations
-genes=/cellar/users/mpagadal/projects/TestosteroneGWAS/data/coloc/gtex.significant.genes.txt
-out=/cellar/users/mpagadal/projects/TestosteroneGWAS/data/coloc/gtex_files
+genes=/cellar/users/mpagadal/projects/TestosteroneGWAS/data/coloc/gtex.significant.genes.metal.txt
+out=/cellar/users/mpagadal/projects/TestosteroneGWAS/data/coloc/metal/gtex_files
+
+mkdir -p $out
 
 python -u /cellar/users/mpagadal/projects/TestosteroneGWAS/scripts/bin/compile_gtex_genes.py --mapping $map --direct $gtex --cell $cell --genes $genes --out $out/$cell.snps.csv
 

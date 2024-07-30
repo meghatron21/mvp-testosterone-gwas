@@ -13,20 +13,22 @@ pheno=$1
 group=$2
 
 mvp=/cellar/users/mpagadal/projects/TestosteroneGWAS/data/summarystats/compiled/$group.$pheno.compiled.statistics.tsv
-gtex=/cellar/users/mpagadal/projects/TestosteroneGWAS/data/coloc/gtex_files/$cell.snps.csv
-coloc_input=/cellar/users/mpagadal/projects/TestosteroneGWAS/data/coloc/coloc_input/$pheno/$group/
-coloc_output=/cellar/users/mpagadal/projects/TestosteroneGWAS/data/coloc/coloc_output/$pheno/$group/
+gtex=/cellar/users/mpagadal/projects/TestosteroneGWAS/data/coloc/metal/gtex_files/$cell.snps.csv
+coloc_input=/cellar/users/mpagadal/projects/TestosteroneGWAS/data/coloc/metal/coloc_input/$pheno/$group/
+coloc_output=/cellar/users/mpagadal/projects/TestosteroneGWAS/data/coloc/metal/coloc_output/$pheno/$group/
 
 mkdir -p $coloc_input
 mkdir -p $coloc_output
 
-# if [ $pheno == "hypogonad" ]
-# then
+if [ $pheno == "hypogonad" ]
+then
+echo "running hypogonad analysis"
 # python -u /cellar/users/mpagadal/projects/TestosteroneGWAS/scripts/bin/make-coloc-input.py --gtex $gtex --mvp $mvp --type logistic --out $coloc_input
-# else
+Rscript /cellar/users/mpagadal/projects/TestosteroneGWAS/scripts/bin/coloc.hypogonad.R $coloc_input $cell $coloc_output
+else
 # python -u /cellar/users/mpagadal/projects/TestosteroneGWAS/scripts/bin/make-coloc-input.py --gtex $gtex --mvp $mvp --type linear --out $coloc_input
-# fi
-    
 Rscript /cellar/users/mpagadal/projects/TestosteroneGWAS/scripts/bin/coloc.R $coloc_input $cell $coloc_output
+fi
+    
     
 date
