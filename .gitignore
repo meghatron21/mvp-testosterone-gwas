@@ -11,6 +11,9 @@ ARCHIVE/
 #notebook checkpoints
 **/notebooks/.ipynb_checkpoints/
 **/notebooks/ARCHIVE/
+**/notebooks/**csv
+**/notebooks/**bed
+**/notebooks/**txt
 
 #validation data
 **/validation/data/
